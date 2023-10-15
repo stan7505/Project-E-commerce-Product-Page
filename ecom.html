@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page - Dukes.in</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            align-items: flex-start;
+        }
+.watermark {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        /* Style the watermark text */
+        .watermark-text {
+            position: absolute;
+            font-size: 250px; /* Adjust the font size to make it very large */
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.1); /* Text color with transparency */
+            pointer-events: none;
+            transform: rotate(-45deg); /* Rotate the text */
+            transform-origin: 50% 50%; /* Set the rotation origin to the center */
+            left: 25%; /* Adjust the left value to move the text more towards the center */
+            top: 35%; /* Adjust the top value to move the text more towards the center */
+            white-space: nowrap;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+            background-color: #232F3E;
+            color: white;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            border: none;
+            border-radius: 20px;
+            padding: 10px;
+        }
+
+        .search-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: white;
+        }
+
+        .search-button .material-symbols-outlined {
+            font-size: 24px;
+        }
+
+        .cart {
+            position: relative;
+            background-color: #FF9900;
+            color: #232F3E;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
+
+        .cart img {
+            width: 30px;
+            height: 30px;
+            margin: 5px;
+        }
+
+        .product-container {
+            display: flex;
+            align-items: flex-start;
+            padding: 30px;
+        }
+
+        .product-image-container {
+            margin-right: 20px;
+        }
+
+        .product-image {
+            position: relative;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .product-image img:hover {
+            transform: scale(1.1);
+        }
+
+        .product-details {
+            flex: 1;
+        }
+
+        .product-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .product-description {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .product-description table {
+            width: 100%;
+        }
+
+        .product-description table tr {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .product-description table td {
+            flex: 1;
+        }
+
+        .product-description table td .a-size-base {
+            font-weight: bold;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .product-price .material-symbols-outlined {
+            font-size: 24px;
+            margin-right: 5px;
+        }
+
+        .cart-button {
+            background-color: #FF9900;
+            color: #232F3E;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .buy-now-button {
+            background-color: #232F3E;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .related-products {
+            margin-top: 20px;
+        }
+
+        .related-products h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .related-product {
+            border: 1px solid #232F3E;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+
+        .related-product h4 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .reviews {
+            margin-top: 20px;
+        }
+
+        .reviews h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .review {
+            margin-bottom: 20px;
+        }
+
+        .reviewer-name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .mini-cart {
+            display: none;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: white;
+            border: 1px solid #232F3E;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .mini-cart h3 {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .mini-cart-product {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .mini-cart-product img {
+            max-width: 40px;
+            max-height: 40px;
+            margin-right: 10px;
+        }
+
+        .mini-cart-product-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0;
+        }
+ footer {
+            background-color: #232F3E;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 24px; /* Twice the size of the header text */
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px; /* Increase spacing between links */
+            font-size: 18px; /* Increase link text size */
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+@media screen and (max-width: 768px) {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .product-image img {
+                max-width: 100%; /* Ensure the image fits within the viewport */
+                height: auto; /* Maintain the image's aspect ratio */
+            }
+
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0; /* Increase header padding for better spacing */
+                background-color: #232F3E;
+                width: 200%; /* Extend the header to the full width of the viewport */
+            }
+
+            .logo {
+                font-size: 20px; /* Decrease font size for mobile readability */
+            }
+
+            .search-input {
+                width: 60%; /* Adjust the input width for mobile view */
+            }
+
+            .search-bar {
+                flex: 1;
+            }
+
+            .cart {
+                margin-right: 10px;
+            }
+
+            .product-container {
+                flex-direction: column; /* Stack elements vertically */
+                padding: 20px; /* Add padding for better spacing */
+            }
+
+            .product-image-container {
+                margin-right: 0; /* Remove margin for image container */
+                width: 100%; /* Make the image container take the full width */
+            }
+
+            .product-details {
+                padding: 20px; /* Add padding to product details for better spacing */
+            }
+
+            .product-title {
+                font-size: 18px; /* Decrease font size for mobile readability */
+            }
+
+            .product-price {
+                font-size: 16px; /* Decrease font size for mobile readability */
+            }
+
+            .cart-button {
+                margin-top: 20px; /* Add space below the "Add to Cart" button */
+            }
+
+            .related-product {
+                margin: 20px 0; /* Add space between related products */
+            }
+
+            .related-product h4 {
+                font-size: 16px; /* Decrease font size for better mobile readability */
+            }
+
+            .reviews h2 {
+                font-size: 18px; /* Decrease font size for mobile readability */
+            }
+
+            .reviewer-name {
+                font-size: 14px; /* Decrease font size for mobile readability */
+            }
+
+            footer {
+                background-color: #232F3E;
+                color: white;
+                padding: 20px;
+                text-align: center;
+                width: 188%; /* Extend the footer to the full width of the viewport */
+            }
+
+            footer a {
+                font-size: 14px; /* Decrease link text size for mobile readability */
+            }
+.related-product {
+        border: none;
+    }
+}
+
+            .watermark {
+                display: none; /* Hide the watermark on mobile view */
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+ <div class="watermark">
+        <div class="watermark-text">VISHAL.N</div>
+    </div>
+    <header>
+        <div class="logo">Dukes.in</div>
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Search for products, brands and more">
+            <button class="search-button">
+                <span class="material-symbols-outlined">search</span>
+            </button>
+        </div>
+        <div class="cart">
+            <span class="material-symbols-outlined">shopping_cart</span>
+        </div>
+    </header>
+
+    <div class="product-container">
+        <div class="product-image-container">
+            <div class="product-image">
+                <img src="https://m.media-amazon.com/images/I/819Lw2PE8tL._SX569_.jpg"
+                    data-old-hires="https://m.media-amazon.com/images/I/819Lw2PE8tL._SL1500_.jpg"
+                    onload="markFeatureRenderForImageBlock(); this.onload='';setCSMReq('af');if(typeof addlongPoleTag === 'function'){ addlongPoleTag('af','desktop-image-atf-marker');};setCSMReq('cf')"
+                    data-a-image-name="landingImage" id="landingImage"
+                    data-a-dynamic-image="{&quot;https://m.media-amazon.com/images/I/819Lw2PE8tL._SX466_.jpg&quot;:[319,466],&quot;https://m.media-amazon.com/images/I/819Lw2PE8tL._SX355_.jpg&quot;:[243,355],&quot;https://m.media-amazon.com/images/I/819Lw2PE8tL._SX522_.jpg&quot;:[358,522],&quot;https://m.media-amazon.com/images/I/819Lw2PE8tL._SX679_.jpg&quot;:[465,679],&quot;https://m.media-amazon.com/images/I/819Lw2PE8tL._SX450_.jpg&quot;:[308,450],&quot;https://m.media-amazon.com/images/I/819Lw2PE8tL._SX425_.jpg&quot;:[291,425],&quot;https://m.media-amazon.com/images/I/819Lw2PE8tL._SX569_.jpg&quot;:[390,569]}"
+                    style="max-width: 546px; max-height: 373.918px;">
+            </div>
+        </div>
+
+        <div class="product-details">
+            <h1 class="product-title">
+                Redmi 80 cm (32 inches) F Series HD Ready Smart LED Fire TV L32R8-FVIN (Black)
+            </h1>
+            <div class="product-price">
+                <span class="material-symbols-outlined">currency_rupee</span>
+                <span>16,999</span>
+            </div>
+            <p class="product-description">
+                COMBINED DELIVERY & INSTALLATION: Avail brand-approved installation at the time of delivery by the same
+                expert (Wall mount may be chargeable).
+                <table>
+                    <tr class="a-spacing-small po-display.size">
+                        <td class="a-span3">
+                            <span class="a-size-base a-text-bold">Screen Size</span>
+                        </td>
+                        <td class="a-span9">
+                            <span class="a-size-base po-break-word">32 Inches</span>
+                        </td>
+                    </tr>
+                    <tr class="a-spacing-small po-display.size">
+                        <td class="a-span3">
+                            <span class="a-size-base a-text-bold">Brand</span>
+                        </td>
+                        <td class="a-span9">
+                            <span class="a-size-base po-break-word">Redmi</span>
+                        </td>
+                    </tr>
+                    <tr class="a-spacing-small po-display.size">
+                        <td class="a-span3">
+                            <span class="a-size-base a-text-bold">Supported Internet Services</span>
+                        </td>
+                        <td class="a-span9">
+                            <span class="a-size-base po-break-word">Netflix, 12000+ Apps from App Store, Prime Video, Disney+ Hotstar</span>
+                        </td>
+                    </tr>
+                    <tr class="a-spacing-small po-display.size">
+                        <td class="a-span3">
+                            <span class="a-size-base a-text-bold">Display Technology</span>
+                        </td>
+                        <td class="a-span9">
+                            <span class="a-size-base po-break-word">LED</span>
+                        </td>
+                    </tr>
+                    <tr class="a-spacing-small po-display.size">
+                        <td class="a-span3">
+                            <span class="a-size-base a-text-bold">Product Dimensions</span>
+                        </td>
+                        <td class="a-span9">
+                            <span class="a-size-base po-break-word">8.3D x 71.6W x 42.4H Centimeters</span>
+                        </td>
+                    </tr>
+                    <tr class="a-spacing-small po-display.size">
+                        <td class="a-span3">
+                            <span class="a-size-base a-text-bold">Resolution</span>
+                        </td>
+                        <td class="a-span9">
+                            <span class="a-size-base po-break-word">720p</span>
+                        </td>
+                    </tr>
+                    <tr class="a-spacing-small po-display.size">
+                        <td class="a-span3">
+                            <span class="a-size-base a-text-bold">Refresh Rate</span>
+                        </td>
+                        <td class="a-span9">
+                            <span class="a-size-base po-break-word">60 Hz</span>
+                        </td>
+                    </tr>
+                    <tr class="a-spacing-small po-display.size">
+                        <td class="a-span3">
+                            <span class="a-size-base a-text-bold">Special Feature</span>
+                        </td>
+                        <td class="a-span9">
+                            <span class="a-size-base po-break-word">Fire OS 7 | Supported Apps: Prime Video | Netflix | 12000+ apps from App Store | Voice Remote with Alexa | DTH Set-Top Box Integration to switch between DTH TV Channels and OTT apps from home screen | Display Mirroring - Airplay and Miracast</span>
+                        </td>
+                    </tr>
+                    <tr class="a-spacing-small po-display.size">
+                        <td class="a-span3">
+                            <span class="a-size-base a-text-bold">Included Components</span>
+                        </td>
+                        <td class="a-span9">
+                            <span class="a-size-base po-break-word">1 LED TV, 2 Table Stand Base, 1 User Manual, 1 Remote Control, 4 screws, 2 x AAA Batteries</span>
+                        </td>
+                    </tr>
+                    <tr class="a-spacing-small po-display.size">
+                        <td class="a-span3">
+                            <span class="a-size-base a-text-bold">Connectivity Technology</span>
+                        </td>
+                        <td class="a-span9">
+                            <span class="a-size-base po-break-word">Wi-Fi, USB, Ethernet, HDMI</span>
+                        </td>
+                    </tr>
+                </table>
+            </p>
+            <button class="cart-button" onclick="addToCart()">Add to Cart</button>  <button class="buy-now-button">Buy Now</button>
+ <img src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-warranty._CB485935626_.png" class="a-image-wrapper a-manually-loaded icon-box" id="" style="height:35px;width:35px;" alt="1 Year Warranty" data-a-image-source="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-warranty._CB485935626_.png"> <img src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-returns._CB484059092_.png" class="a-image-wrapper a-manually-loaded icon-box" id="" style="height:35px;width:35px;" alt="10 days Replacement by Brand" data-a-image-source="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-returns._CB484059092_.png"> <img src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/trust_icon_free_shipping_81px._CB630870460_.png" class="a-image-wrapper a-manually-loaded icon-box" id="" style="height:35px;width:35px;" alt="Free Delivery" data-a-image-source="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/trust_icon_free_shipping_81px._CB630870460_.png"> <img src="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-top-brand._CB617044271_.png" class="a-image-wrapper a-manually-loaded icon-box" id="" style="height:35px;width:35px;" alt="Top Brand" data-a-image-source="https://m.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-top-brand._CB617044271_.png">
+
+        </div>
+
+    </div>
+
+    <div class="related-products">
+        <h3>Related Products</h3>
+        <div class="related-product">
+<img alt="MI 80 cm (32 inches) 5A Series HD Ready Smart Android LED TV L32M7-5AIN (Black)" src="https://m.media-amazon.com/images/I/81xT3no1+6L._AC_SS450_.jpg" aria-hidden="true" class="" data-src="https://m.media-amazon.com/images/I/81xT3no1+6L._AC_SS450_.jpg">
+            <h4>MI 80 cm (32 inches) 5A Series HD Ready Smart Android LED TV L32M7-5AIN (Black)</h4>
+           <h4> <p><div class="related-price">
+                <span class="material-symbols-outlined">currency_rupee</span>21,999</span>
+            </div> </h4>
+</p>
+        </div>
+        <div class="related-product">
+<img alt="Acer 80 cm (32 inches) Advanced I Series HD Ready Smart LED Google TV AR32GR2841HDFL (Black)" src="https://m.media-amazon.com/images/I/511DmhAgHAL._AC_SS450_.jpg" aria-hidden="true" class="" data-src="https://m.media-amazon.com/images/I/511DmhAgHAL._AC_SS450_.jpg">
+            <h4>Acer 80 cm (32 inches) Advanced I Series HD Ready Smart LED Google TV AR32GR2841HDFL (Black)</h4>
+ <h4> <p><div class="related-price">
+                <span class="material-symbols-outlined">currency_rupee</span>35,000</span>
+            </div> </h4>
+</p>
+
+
+        </div>
+    </div>
+
+    <div class="reviews">
+        <h2>Customer Reviews</h2>
+        <div class="review">
+            <div class="reviewer-name">John Doe</div>
+            <p>Good picture quality,good sound ,good connectivity.</p>
+        </div>
+        <div class="review">
+            <div class="reviewer-name">Jane Smith</div>
+            <p>The Android 11 TV has brought a significant leap in smart TV innovation to my living room. Here's why I'm impressed:
+
+1. **Updated Interface:** Android 11 TV offers a more polished and intuitive interface compared to its predecessors. Navigating through apps, settings, and content is smoother and more user-friendly.
+
+2. **Faster Performance:** The improved performance is noticeable. Apps load quickly, and multitasking is a breeze, thanks to the upgraded hardware and software optimizations.
+
+3. **Expanded App Library:** The Google Play Store on Android 11 TV provides access to a vast library of apps and games, ensuring endless entertainment possibilities.
+
+4. **Enhanced Voice Control:** Voice commands with the remote or via built-in virtual assistants (like Google Assistant) have become more accurate and responsive, making it convenient to control the TV and search for content.
+
+5. **Customization:** Android 11 TV allows for more customization, from arranging apps on the home screen to personalized recommendations based on viewing habits.
+
+6. **Security and Privacy:** There's an increased focus on security and privacy, with better control over app permissions and data sharing.
+
+7. **Casting and Connectivity:** Casting content from other devices is seamless, and the TV offers a wide range of connectivity options for various devices.
+
+8. **Picture and Sound Quality:** Of course, the TV's picture and sound quality are paramount. Android 11 TV supports the latest display and audio technologies, ensuring a top-notch viewing and listening experience..</p>
+        </div>
+    </div>
+
+    <div class="mini-cart" id="miniCart">
+        <h3>Cart</h3>
+</div>
+        <div class="mini-cart-product">
+           </div>
+    </div>
+
+     <script>
+    var cartButton = document.querySelector(".cart");
+    var addToCartButton = document.querySelector(".cart-button");
+    var miniCart = document.getElementById("miniCart");
+    var productImage = "https://m.media-amazon.com/images/I/819Lw2PE8tL._SX569_.jpg"; // Provide the image URL of the product to be added to the mini-cart
+
+    cartButton.addEventListener("click", function () {
+        // This section will add the product to the mini-cart
+        var productTitle = "Redmi 80 cm (32 inches) F Series HD Ready Smart LED Fire TV L32R8-FVIN (Black)"; // Provide the product title
+        var productTitleElement = document.createElement("p");
+        productTitleElement.className = "mini-cart-product-title";
+        productTitleElement.textContent = productTitle;
+
+        var productImageElement = document.createElement("img");
+        productImageElement.setAttribute("src", productImage);
+        productImageElement.setAttribute("alt", "Product");
+
+        var miniCartProduct = document.createElement("div");
+        miniCartProduct.className = "mini-cart-product";
+        miniCartProduct.appendChild(productImageElement);
+        miniCartProduct.appendChild(productTitleElement);
+
+        miniCart.innerHTML = ""; // Clear previous content
+        miniCart.appendChild(miniCartProduct);
+
+        miniCart.style.display = "block";
+        setTimeout(function () {
+            miniCart.style.display = "none";
+        }, 5000);
+    });
+
+    addToCartButton.addEventListener("click", function () {
+        // This section will add the product to the mini-cart when "Add to Cart" is clicked
+        var productTitle = "Redmi 80 cm (32 inches) F Series HD Ready Smart LED Fire TV L32R8-FVIN (Black)"; // Provide the product title
+        var productTitleElement = document.createElement("p");
+        productTitleElement.className = "mini-cart-product-title";
+        productTitleElement.textContent = productTitle;
+
+        var productImageElement = document.createElement("img");
+        productImageElement.setAttribute("src", productImage);
+        productImageElement.setAttribute("alt", "Product");
+
+        var miniCartProduct = document.createElement("div");
+        miniCartProduct.className = "mini-cart-product";
+        miniCartProduct.appendChild(productImageElement);
+        miniCartProduct.appendChild(productTitleElement);
+
+        miniCart.innerHTML = ""; // Clear previous content
+        miniCart.appendChild(miniCartProduct);
+
+        miniCart.style.display = "block";
+        setTimeout(function () {
+            miniCart.style.display = "none";
+        }, 5000);
+    });
+
+    function addToCart() {
+        // Add your logic to add the product to the cart here.
+    }
+</script>
+</body>
+ <footer>
+        <p>Get to Know Us</p>
+        <a href="#">About Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Press Releases</a>
+        <a href="#">Connect with Us</a>
+        <a href="#">Make Money with Us</a>
+        <a href="#">Sell on Dukes</a>
+        <a href="#">Dukes Global Selling</a>
+        <a href="#">Become an Affiliate</a>
+        <a href="#">Advertise Your Products</a>
+        <a href="#">Let Us Help You</a>
+        <a href="#">COVID-19 and Dukes</a>
+        <a href="#">Your Account</a>
+        <a href="#">Returns Centre</a>
+        <a href="#">Dukes App Download</a>
+        <a href="#">English</a>
+        <a href="#">Australia</a>
+        <a href="#">Brazil</a>
+        <a href="#">Canada</a>
+        <a href="#">France</a>
+        <a href="#">Germany</a>
+        <a href="#">Italy</a>
+        <a href="#">Japan</a>
+        <a href="#">Mexico</a>
+        <a href="#">Netherlands</a>
+        <a href="#">Poland</a>
+        <a href="#">Singapore</a>
+        <a href="#">Spain</a>
+        <a href="#">Turkey</a>
+        <a href="#">United Arab Emirates</a>
+        <a href="#">United Kingdom</a>
+        <a href="#">United States</a>
+        <a href="#">More</a>
+        <a href="#">Dukes Books</a>
+        <a href="#">Dukes Web Services</a>
+        <a href="#">Audible</a>
+        <a href="#">IMDb</a>
+        <a href="#">Shopbop</a>
+        <a href="#">Dukes Business</a>
+        <a href="#">Dukes Now</a>
+        <a href="#">Duke Music</a>
+    </footer>
+</html>
