@@ -32,3 +32,5 @@ To design and build a product page for an e-commerce website. using HTML, CSS, a
    - You can customize the product details, images, and styling to match your specific product and design requirements.
 
 This code provides the foundation for an e-commerce product page with a functional mini cart, allowing users to view and manage items in their shopping cart.
+
+<img src="https://github.com/user-attachments/assets/d15af1f2-6833-46bc-a9ae-202af59f7a37">
