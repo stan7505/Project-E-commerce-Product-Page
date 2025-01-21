@@ -1,4 +1,4 @@
-# Project-E-commerce-Product-Page
+![Screenshot (10)](https://github.com/user-attachments/assets/2c2d66f8-5d14-4e8f-846a-03a1574019e9)# Project-E-commerce-Product-Page
 To design and build a product page for an e-commerce website. using HTML, CSS, and even some basic JavaScript.
 
 1. **Header Section:**
@@ -33,4 +33,6 @@ To design and build a product page for an e-commerce website. using HTML, CSS, a
 
 This code provides the foundation for an e-commerce product page with a functional mini cart, allowing users to view and manage items in their shopping cart.
 
-<img src="https://github.com/user-attachments/assets/d15af1f2-6833-46bc-a9ae-202af59f7a37">
+<img src="https://github.com/user-attachments/assets/75380ffa-7d92-4b3a-9278-0214e29dd679">
+
+
