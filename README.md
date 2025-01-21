@@ -1,4 +1,4 @@
-![Screenshot (10)](https://github.com/user-attachments/assets/2c2d66f8-5d14-4e8f-846a-03a1574019e9)# Project-E-commerce-Product-Page
+# Project-E-commerce-Product-Page
 To design and build a product page for an e-commerce website. using HTML, CSS, and even some basic JavaScript.
 
 1. **Header Section:**
